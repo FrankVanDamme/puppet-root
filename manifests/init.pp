@@ -9,6 +9,7 @@ class root (
   $password                    = undef,
   $comment                     = $::root::params::comment,
   $shell                       = $::root::params::shell,
+  $homedirmode                 = $::root::params::homedirmode,
   $ssh_authorized_keys_ensure  = undef,
   $ssh_authorized_keys_content = undef,
   $ssh_authorized_keys_source  = undef,
@@ -24,6 +25,11 @@ class root (
     home     => '/root',
     uid      => '0',
     gid      => '0',
+  }
+
+  file { "/root":
+      ensure => directory,
+      mode   => $homedirmode,
   }
 
   # We might want to manage the authorized_keys content, or disable it

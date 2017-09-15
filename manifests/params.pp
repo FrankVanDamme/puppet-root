@@ -2,6 +2,7 @@ class root::params {
 
   $comment = 'root'
   $shell = '/bin/bash'
+  $homedirmode = '0700'
 
   case $::operatingsystem {
     'Gentoo': {
